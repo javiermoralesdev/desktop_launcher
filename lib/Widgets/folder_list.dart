@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FolderList extends StatefulWidget {
@@ -9,11 +8,25 @@ class FolderList extends StatefulWidget {
 }
 
 class _FolderListState extends State<FolderList> {
+  void addProgram() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Carpeta añadido"),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: const [Text("Program")],
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: const [Text("Folders")],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: addProgram,
+        child: const Icon(Icons.add),
       ),
     );
   }

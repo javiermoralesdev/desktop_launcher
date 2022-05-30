@@ -1,0 +1,22 @@
+{
+    "programs":"Programs",
+    "folders":"Folders",
+    "programName":"Program's name",
+    "programDesc":"Program's description",
+    "programPath":"Program's path (absolute)",
+    "programNotExist":"The executable does not exist",
+    "add":"Add",
+    "cancel":"Cancel",
+    "runFolder":"Open folder",
+    "runProgram":"Run",
+    "delete":"Delete",
+    "settings":"Settings",
+    "exitOnRun":"Close launcher when executing program",
+    "exitOnOpen":"Close launcher when opening folder",
+    "addProgram":"Add program",
+    "addFolder":"Add folder",
+    "folderName":"Folder's name",
+    "folderDesc":"Folder's description",
+    "folderPath":"Folder's path (absolute)",
+    "folderNotExist":"The folder does not exist"
+}
