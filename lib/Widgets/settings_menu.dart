@@ -1,3 +1,5 @@
+import 'package:desktop_launcher/Data/save_system.dart';
+import 'package:desktop_launcher/Data/settings_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,12 +17,28 @@ class _SettingsState extends State<SettingsMenu> {
   void changeCloseOnRun(bool value) {
     setState(() {
       closeOnRun = value;
+      saveSettings(SettingsData(closeOnOpen, closeOnRun));
     });
   }
 
   void changeCloseOnOpen(bool value) {
     setState(() {
       closeOnOpen = value;
+      saveSettings(SettingsData(closeOnOpen, closeOnRun));
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    reloadSettings();
+  }
+
+  void reloadSettings() async {
+    SettingsData data = await loadSettings();
+    setState(() {
+      closeOnOpen = data.closeOnOpen;
+      closeOnRun = data.closeOnRun;
     });
   }
 

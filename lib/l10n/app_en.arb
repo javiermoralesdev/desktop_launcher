@@ -18,5 +18,7 @@
     "folderName":"Folder's name",
     "folderDesc":"Folder's description",
     "folderPath":"Folder's path (absolute)",
-    "folderNotExist":"The folder does not exist"
+    "folderNotExist":"The folder does not exist",
+    "noPrograms":"There are no programs yet",
+    "noFolders":"There are no folders yet"
 }

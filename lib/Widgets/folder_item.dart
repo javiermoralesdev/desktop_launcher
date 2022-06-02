@@ -5,28 +5,28 @@ import 'package:desktop_launcher/Data/save_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ProgramItem extends StatefulWidget {
+class FolderItem extends StatefulWidget {
   final Program program;
   final Function(Program) onDeleteProgram;
 
-  const ProgramItem(
+  const FolderItem(
       {Key? key, required this.program, required this.onDeleteProgram})
       : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _ProgramItemState();
+  State<StatefulWidget> createState() => _FolderItemState();
 }
 
-class _ProgramItemState extends State<ProgramItem> {
+class _FolderItemState extends State<FolderItem> {
   void runProgram() {
-    Directory.current = getFolderOfAProgram(widget.program);
     try {
-      Process.run(widget.program.path, []);
-    } on Exception catch (_) {
+      Directory.current = widget.program.path;
+      Process.run("explorer", [widget.program.path]);
+    } on ProcessException catch (_) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          content: Text(AppLocalizations.of(context)!.programNotExist),
+          content: Text(AppLocalizations.of(context)!.folderNotExist),
         ),
       );
     }
@@ -48,7 +48,7 @@ class _ProgramItemState extends State<ProgramItem> {
                     Colors.green,
                   ),
                 ),
-                child: Text(AppLocalizations.of(context)!.runProgram),
+                child: Text(AppLocalizations.of(context)!.runFolder),
               ),
             ),
             Expanded(
