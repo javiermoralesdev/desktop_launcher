@@ -1,0 +1,14 @@
+{
+    "programName":"Nombre del programa",
+    "programDesc":"Descripción del programa (opcional)",
+    "programPath":"Ruta del programa (absoluta)",
+    "programNotExist":"El executable no existe",
+    "add":"Añadir",
+    "cancel":"Cancelat",
+    "runProgram":"Ejecutar",
+    "delete":"Eliminar",
+    "settings":"Opciones",
+    "exitOnRun":"Cerrar lanzador al ejecutar programa",
+    "addProgram":"Añadir programa",
+    "noPrograms":"Aún no hay programas"
+}

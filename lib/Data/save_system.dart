@@ -14,7 +14,7 @@ Future<SettingsData> loadSettings() async {
   final prefs = await SharedPreferences.getInstance();
   String jsonString = prefs.getString('settings') ?? "";
   if (jsonString.isEmpty) {
-    return SettingsData(false, false);
+    return SettingsData(false);
   }
   return SettingsData.fromJson(jsonDecode(jsonString));
 }

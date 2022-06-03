@@ -18,10 +18,15 @@ class ProgramItem extends StatefulWidget {
 }
 
 class _ProgramItemState extends State<ProgramItem> {
-  void runProgram() {
+  void runProgram() async {
     Directory.current = getFolderOfAProgram(widget.program);
     try {
       Process.run(widget.program.path, []);
+      bool mustClose = (await loadSettings()).closeOnRun;
+      if (mustClose) {
+        await Future.delayed(const Duration(milliseconds: 500));
+        exit(0);
+      }
     } on Exception catch (_) {
       showDialog(
         context: context,

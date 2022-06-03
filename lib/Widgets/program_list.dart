@@ -31,7 +31,9 @@ class _ProgramListState extends State<ProgramList> {
   }
 
   void addProgramToList(String name, String desc, String path) {
-    final bool fileExists = io.File(path).existsSync();
+    bool fileExists = io.File(path).existsSync();
+    String fileExtension = path.split('.').removeLast();
+    fileExists = fileExtension == "exe" && fileExtension == "bat";
     if (!fileExists) {
       showDialog(
         context: context,

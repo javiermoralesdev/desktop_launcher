@@ -12,19 +12,11 @@ class SettingsMenu extends StatefulWidget {
 
 class _SettingsState extends State<SettingsMenu> {
   bool closeOnRun = false;
-  bool closeOnOpen = false;
 
   void changeCloseOnRun(bool value) {
     setState(() {
       closeOnRun = value;
-      saveSettings(SettingsData(closeOnOpen, closeOnRun));
-    });
-  }
-
-  void changeCloseOnOpen(bool value) {
-    setState(() {
-      closeOnOpen = value;
-      saveSettings(SettingsData(closeOnOpen, closeOnRun));
+      saveSettings(SettingsData(closeOnRun));
     });
   }
 
@@ -37,7 +29,6 @@ class _SettingsState extends State<SettingsMenu> {
   void reloadSettings() async {
     SettingsData data = await loadSettings();
     setState(() {
-      closeOnOpen = data.closeOnOpen;
       closeOnRun = data.closeOnRun;
     });
   }
@@ -59,15 +50,6 @@ class _SettingsState extends State<SettingsMenu> {
               Text(AppLocalizations.of(context)!.exitOnRun)
             ],
           ),
-          Row(
-            children: [
-              Checkbox(
-                value: closeOnOpen,
-                onChanged: (value) => changeCloseOnOpen(value!),
-              ),
-              Text(AppLocalizations.of(context)!.exitOnOpen)
-            ],
-          )
         ],
       ),
     );

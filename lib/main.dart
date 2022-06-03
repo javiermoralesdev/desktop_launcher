@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:window_size/window_size.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setWindowTitle("Desktop Launcher");
   runApp(const RootApp());
 }
 
@@ -25,7 +28,7 @@ class RootApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
-      supportedLocales: const [Locale('en')],
+      supportedLocales: const [Locale('en'), Locale('es')],
       theme: ThemeData(primarySwatch: Colors.red),
     );
   }

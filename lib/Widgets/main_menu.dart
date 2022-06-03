@@ -1,4 +1,3 @@
-import 'package:desktop_launcher/Widgets/folder_list.dart';
 import 'package:desktop_launcher/Widgets/program_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,14 +10,6 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  int selectedIndex = 0;
-  static const List<Widget> options = [ProgramList(), FolderList()];
-  void selectList(int value) {
-    setState(() {
-      selectedIndex = value;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,21 +23,7 @@ class _MainMenuState extends State<MainMenu> {
           )
         ],
       ),
-      body: options.elementAt(selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (val) => selectList(val),
-        currentIndex: selectedIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.insert_drive_file),
-            label: AppLocalizations.of(context)!.programs,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.folder),
-            label: AppLocalizations.of(context)!.folders,
-          )
-        ],
-      ),
+      body: const ProgramList(),
     );
   }
 }

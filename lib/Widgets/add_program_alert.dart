@@ -20,9 +20,7 @@ class _AddProgramAlertState extends State<AddProgramAlert> {
   TextEditingController pathController = TextEditingController();
 
   bool areEmpty() {
-    return nameController.text.isEmpty ||
-        descController.text.isEmpty ||
-        pathController.text.isEmpty;
+    return nameController.text.isEmpty || pathController.text.isEmpty;
   }
 
   @override
@@ -33,44 +31,40 @@ class _AddProgramAlertState extends State<AddProgramAlert> {
           TextField(
             controller: nameController,
             decoration: InputDecoration(
-              hintText: widget.type == SoftwareType.PROGRAM
-                  ? AppLocalizations.of(context)!.programName
-                  : AppLocalizations.of(context)!.folderName,
+              hintText: AppLocalizations.of(context)!.programName,
             ),
             onChanged: (g) => {setState(() {})},
           ),
           TextField(
             controller: descController,
             decoration: InputDecoration(
-              hintText: widget.type == SoftwareType.PROGRAM
-                  ? AppLocalizations.of(context)!.programDesc
-                  : AppLocalizations.of(context)!.folderPath,
+              hintText: AppLocalizations.of(context)!.programDesc,
             ),
             onChanged: (g) => {setState(() {})},
           ),
           TextField(
             controller: pathController,
             decoration: InputDecoration(
-              hintText: widget.type == SoftwareType.PROGRAM
-                  ? AppLocalizations.of(context)!.programPath
-                  : AppLocalizations.of(context)!.folderPath,
+              hintText: AppLocalizations.of(context)!.programPath,
             ),
             onChanged: (g) => {setState(() {})},
           ),
-          ElevatedButton(
-            onPressed: areEmpty()
-                ? null
-                : () => {
-                      widget.onAddProgram(
-                        nameController.text,
-                        descController.text,
-                        pathController.text,
-                      ),
-                    },
-            child: Text(AppLocalizations.of(context)!.addFolder),
-          )
         ],
       ),
+      actions: [
+        TextButton(
+          onPressed: areEmpty()
+              ? null
+              : () => {
+                    widget.onAddProgram(
+                      nameController.text,
+                      descController.text,
+                      pathController.text,
+                    ),
+                  },
+          child: Text(AppLocalizations.of(context)!.addProgram),
+        )
+      ],
     );
   }
 }
