@@ -32,8 +32,11 @@ class _ProgramListState extends State<ProgramList> {
 
   void addProgramToList(String name, String desc, String path) {
     bool fileExists = io.File(path).existsSync();
+    print(fileExists);
     String fileExtension = path.split('.').removeLast();
-    fileExists = fileExtension == "exe" && fileExtension == "bat";
+    print(fileExtension);
+    fileExists = fileExtension == "exe" || fileExtension == "bat";
+    print(fileExists);
     if (!fileExists) {
       showDialog(
         context: context,
@@ -71,14 +74,16 @@ class _ProgramListState extends State<ProgramList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: programs.isNotEmpty
-          ? Column(
-              children: [
-                for (var program in programs)
-                  ProgramItem(
-                    program: program,
-                    onDeleteProgram: deleteProgram,
-                  )
-              ],
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  for (var program in programs)
+                    ProgramItem(
+                      program: program,
+                      onDeleteProgram: deleteProgram,
+                    )
+                ],
+              ),
             )
           : const NoPrograms(),
       floatingActionButton: FloatingActionButton(
